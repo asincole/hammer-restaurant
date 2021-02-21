@@ -1,0 +1,21 @@
+{
+  "name": "my-hammer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently  \"npm run start:serverdev\" \"npm run start:clientdev \"",
+    "install:appdependencies": "concurrently \"npm run install:clientdeps \" \"npm run install:serverdeps\"",
+    "start:clientdev": "cd ./bitwala-frontend-ng && npm run start",
+    "start:serverdev": "cd ./bitwala-backend && npm run start",
+    "install:clientdeps": "cd ./bitwala-frontend-ng && npm i",
+    "install:serverdeps": "cd ./bitwala-backend && npm i",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
