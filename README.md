@@ -7,7 +7,10 @@ Sorry, I had messed up git on my system. Had to reinitialize it all when I was d
 - Backend - NestJs, I am a big fan of Typescript, this uses TS out of the box and is build on top of ExpressJs
 - Node: I have node version v12.16.1 running on my system, I do not think you will have problems running this on v14 LTS though.
 - UI: Ng Zorro, an Angular UI component kit using Ant Design
-- Databases: mongodb
+- Databases: mongodb (the configuration can be found here backend/src/config/database.ts)
+
+## Images
+For menu images, I did not implement image upload, I have three image files that get randomly selected when the menu list page renders instead
 
 ## Install Dependencies
 
