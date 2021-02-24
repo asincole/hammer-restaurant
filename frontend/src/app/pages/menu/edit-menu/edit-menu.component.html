@@ -1,0 +1,57 @@
+<div nz-row [nzJustify]="'center'">
+  <div class="form-wrapper" nz-col nzSm="20" nzMd="8" nzLg="8" nzXl="8">
+    <h1>{{menuItemId? 'Edit':'Create'}}</h1>
+
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="menuForm" (ngSubmit)="submitForm()">
+
+      <nz-form-item>
+        <nz-form-label>Food Name</nz-form-label>
+        <nz-form-control nzErrorTip="Please input food name!">
+            <input type="text" nz-input formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Food Price</nz-form-label>
+        <nz-form-control nzErrorTip="Please input food price (e.g 23 or 23.00)!">
+          <input type="text" nz-input formControlName="price" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>SKU</nz-form-label>
+        <nz-form-control nzErrorTip="Please input food sku">
+          <input type="text" nz-input formControlName="sku" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+
+        <nz-form-label>Tags</nz-form-label>
+        <nz-select
+          [nzMaxTagPlaceholder]="tagPlaceHolder"
+          nzMode="multiple"
+          nzPlaceHolder="Please select"
+          [(ngModel)]="listOfTagOptions"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <nz-option *ngFor="let item of foodTags" [nzLabel]="item" [nzValue]="item"></nz-option>
+        </nz-select>
+        <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Description</nz-form-label>
+        <nz-form-control nzErrorTip="Please input food description">
+          <textarea rows="4"  nz-input formControlName="description" > </textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <a nz-button nzBlock routerLink="/menu">Cancel</a>
+      <button nz-button nzBlock class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="menuForm.invalid">Save</button>
+    </form>
+
+
+  </div>
+</div>

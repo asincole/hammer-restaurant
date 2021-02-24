@@ -1,0 +1,31 @@
+.logo {
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+nz-layout {
+  min-height: 100%;
+  height: auto;
+}
+
+[nz-menu] {
+  line-height: 64px;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+nz-content {
+  padding: 50px 50px;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.inner-content {
+  //background: #fff;
+  padding: 24px;
+  min-height: 100%;
+}

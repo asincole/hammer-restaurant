@@ -1,0 +1,42 @@
+export const menuItemListMockData = [
+  {
+    id: '6035aca8f6888477b1f7ad6f',
+    name: 'Jollof Rice',
+    price: 15.0,
+    tags: ['Starchy food', 'Fat'],
+    sku: 'jkbkjb232',
+    description: 'This is the best meal ever',
+  },
+  {
+    id: '603614b60c69038187115c07',
+    name: 'Burger',
+    price: 12,
+    tags: ['Fruit and vegetables', 'Starchy food', 'Dairy', 'Protein', 'Fat'],
+    sku: 'hjvuyyg',
+    description: 'Best burger ever',
+  },
+  {
+    id: '603616540c69038187115c08',
+    name: 'Vegetable Salad',
+    price: 5,
+    tags: ['Fruit and vegetables', 'Dairy', 'Fat'],
+    sku: 'kjvjvh',
+    description: 'Salad with dip of your choice',
+  },
+  {
+    id: '6036168c0c69038187115c09',
+    name: 'Hammer Special',
+    price: 23.12,
+    tags: ['Fruit and vegetables', 'Starchy food', 'Dairy'],
+    sku: 'vjhvjhvj',
+    description: 'Comes with Basmati rice and chicken',
+  },
+  {
+    id: '603616b90c69038187115c0a',
+    name: 'pizza',
+    price: 11,
+    tags: ['Fruit and vegetables', 'Starchy food', 'Dairy'],
+    sku: 'jkjjbjkvbkj',
+    description: 'This is our special serving',
+  },
+];

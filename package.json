@@ -6,10 +6,10 @@
   "scripts": {
     "start": "concurrently  \"npm run start:serverdev\" \"npm run start:clientdev \"",
     "install:appdependencies": "concurrently \"npm run install:clientdeps \" \"npm run install:serverdeps\"",
-    "start:clientdev": "cd ./bitwala-frontend-ng && npm run start",
-    "start:serverdev": "cd ./bitwala-backend && npm run start",
-    "install:clientdeps": "cd ./bitwala-frontend-ng && npm i",
-    "install:serverdeps": "cd ./bitwala-backend && npm i",
+    "start:clientdev": "cd ./frontend && npm run start",
+    "start:serverdev": "cd ./backend && npm run start",
+    "install:clientdeps": "cd ./frontend && npm i",
+    "install:serverdeps": "cd ./backend && npm i",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

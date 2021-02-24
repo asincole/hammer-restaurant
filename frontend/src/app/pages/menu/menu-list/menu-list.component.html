@@ -1,0 +1,94 @@
+<div nz-row [nzGutter]="24">
+  <div nz-col nzSm="24">
+    <h1>Hammer Restaurant</h1>
+  </div>
+
+  <div nz-col nzSm="24">
+    <p>
+      <nz-form-label>Tags Filter</nz-form-label>
+      <nz-select
+        [nzMaxTagPlaceholder]="tagPlaceHolder"
+        nzMode="multiple"
+        nzPlaceHolder="Please select tags from list to filter"
+        [(ngModel)]="listOfTagOptions"
+      >
+        <nz-option *ngFor="let item of foodTags" [nzLabel]="item" [nzValue]="item"></nz-option>
+      </nz-select>
+      <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+      <button nz-button class="margin-right" nzType="primary" (click)="filterList()">Filter</button>
+
+      <button *ngIf="listFiltered" nz-button class="margin-right" (click)="clearFilter()">Clear Filter</button>
+    </p>
+
+  </div>
+
+  <div *ngIf="loading" nz-col nzSm="20" nzMd="6" nzLg="6" nzXl="6">
+    <nz-card [nzLoading]="loading">
+      <nz-card-meta></nz-card-meta>
+    </nz-card>
+    <nz-card [nzLoading]="loading">
+      <nz-card-meta></nz-card-meta>
+    </nz-card>
+    <nz-card [nzLoading]="loading">
+      <nz-card-meta></nz-card-meta>
+    </nz-card>
+  </div>
+
+
+  <div *ngIf="menuItemList?.length === 0" nz-col nzSm="20" nzMd="6" nzLg="6" nzXl="6">
+    <nz-card [nzLoading]="loading">
+      <nz-empty [nzNotFoundContent]="contentTpl">
+
+        <ng-template #contentTpl>
+          <span> No Menu Item found </span>
+        </ng-template>
+      </nz-empty>
+    </nz-card>
+  </div>
+
+  <div *ngFor="let menuItem of menuItemList" nz-col nzSm="20" nzMd="6" nzLg="6" nzXl="6">
+    <nz-card nzHoverable [nzCover]="foodImage">
+      <h2>{{menuItem?.name}}</h2>
+      <p><strong>Price:</strong> {{menuItem?.price | currency: 'EUR':'symbol':'1.2-2'}}</p>
+      <p><strong>Description:</strong> {{menuItem?.description}}</p>
+      <p><strong>Tags:</strong>
+        <span *ngFor="let tag of menuItem.tags; last as isLast">
+            {{tag}}{{isLast ? '' : ','}}
+        </span>
+      </p>
+      <button (click)="showModal(menuItem)" nz-button nzBlock nzType="primary">View</button>
+      <a *ngIf="authService.isLoggedIn" nz-button routerLink="/menu/edit/{{menuItem.id}}" nzType="primary">Edit</a>
+      <button *ngIf="authService.isLoggedIn" nz-button nzType="primary" nzDanger nz-popconfirm
+              nzPopconfirmTitle="Are you sure delete this task?"
+              nzPopconfirmPlacement="bottom"
+              (nzOnConfirm)="confirmDelete(menuItem.id)"
+              (nzOnCancel)="cancelDelete()">Delete
+      </button>
+    </nz-card>
+    <ng-template #foodImage>
+      <img alt="{{menuItem.name}} image" [src]="images[menuItem.imageUrl]"/>
+    </ng-template>
+  </div>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{selectedMenuItem?.name}}" (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSm="24" nzMd="12">
+        <img alt="{{selectedMenuItem.name}} image" [src]="images[selectedMenuItem.imageUrl]"/>
+
+      </div>
+      <div nz-col nzSm="24" nzMd="12">
+        <h3>{{selectedMenuItem?.name}}</h3>
+        <p><strong>Price:</strong> {{selectedMenuItem?.price | currency}}</p>
+        <p><strong>Description:</strong> {{selectedMenuItem?.description}}</p>
+        <p><strong>Tags: </strong>
+          <span *ngFor="let tag of selectedMenuItem.tags; last as isLast">
+            {{tag}}{{isLast ? '' : ','}}
+        </span>
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

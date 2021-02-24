@@ -1,0 +1,40 @@
+<div nz-row [nzJustify]="'center'">
+  <div class="form-wrapper" nz-col nzSm="20" nzMd="8" nzLg="8" nzXl="8">
+    <h1>Register</h1>
+
+    <form nz-form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your first name!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="firstName" placeholder="First Name" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your last name!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="lastName" placeholder="Last Name" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="username" placeholder="Username" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button nzBlock class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="registerForm.invalid">Register</button>
+      Or <a routerLink="/auth/login"> login now! </a>
+    </form>
+
+
+  </div>
+</div>
